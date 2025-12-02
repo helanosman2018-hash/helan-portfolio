@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <title>Helan Osman – Software Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fb;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #1f4f82;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 10px 0 20px;
+      font-size: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #ffb300;
+      color: #222;
+      font-weight: bold;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 20px auto 40px;
+      padding: 0 15px;
+    }
+
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #1f4f82;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-box {
+      background: #f0f3fa;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .project {
+      margin-bottom: 15px;
+    }
+
+    .project h3 {
+      margin: 0 0 5px;
+    }
+
+    .project-tech {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #555;
+    }
+
+    .job {
+      margin-bottom: 15px;
+    }
+
+    .job h3 {
+      margin: 0;
+    }
+
+    .job span {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #555;
+      padding: 15px 0 25px;
+    }
+
+    a {
+      color: #1f4f82;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Helan Osman</h1>
+    <p>
+      Software Developer med erfaring inden for Android, web, backend og IoT-løsninger.
+      Jeg arbejder med Kotlin, Jetpack Compose, React, .NET, SQL, Firebase og cloud-teknologier.
+    </p>
+    <div class="btn-group">
+      <!-- Opdatér linket, når du har lagt dit CV samme sted som denne side -->
+      <a class="btn btn-primary" href="Helan_Osman_CV.pdf" target="_blank">Download CV</a>
+      <a class="btn btn-outline" href="#projects">Se projekter</a>
+      <a class="btn btn-outline" href="#contact">Kontakt mig</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>Om mig</h2>
+      <p>
+        Jeg er diplomingeniør i Sundhedsteknologi og arbejder som softwareudvikler med fokus på
+        mobile apps, web- og backend-udvikling. Jeg brænder for at bygge løsninger, der skaber værdi
+        for mennesker – særligt inden for sundhed og digitale services.
+      </p>
+      <p>
+        Jeg har erfaring fra både studieprojekter og erhverv, bl.a. hos Chromaviso og EventSelfie,
+        hvor jeg har arbejdet med softwareudvikling, test, integration og forbedring af eksisterende systemer.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Tekniske kompetencer</h2>
+      <div class="skills-grid">
+        <div class="skill-box">
+          <strong>Sprog</strong><br />
+          Kotlin, C#, JavaScript, TypeScript, Java
+        </div>
+        <div class="skill-box">
+          <strong>Frameworks</strong><br />
+          Jetpack Compose, React, .NET
+        </div>
+        <div class="skill-box">
+          <strong>Mobile & Cloud</strong><br />
+          Android, Firebase, Firestore, FCM, Agora SDK
+        </div>
+        <div class="skill-box">
+          <strong>Backend & DB</strong><br />
+          REST API’er, SQL, Firestore, Docker
+        </div>
+        <div class="skill-box">
+          <strong>IoT</strong><br />
+          MQTT, EMQX, Raspberry Pi, sensordata
+        </div>
+        <div class="skill-box">
+          <strong>Værktøjer & Metoder</strong><br />
+          Git/GitHub, Visual Studio, VS Code, Postman, Scrum, testautomatisering
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Udvalgte projekter</h2>
+
+      <div class="project">
+        <h3>TolkCare App</h3>
+        <p class="project-tech">
+          Kotlin · Jetpack Compose · Firebase · Firestore · FCM · Agora SDK
+        </p>
+        <p>
+          Android-app til booking af tolke, hvor brugere kan vælge tidspunkter, modtage notifikationer
+          og kommunikere via voice/video-calls. Indeholder logik til håndtering af bookings, sletning,
+          favoritter og kalenderintegration.
+        </p>
+        <!-- Hvis du har GitHub-link -->
+        <!-- <p><a href="https://github.com/DIT_LINK" target="_blank">Se projekt på GitHub</a></p> -->
+      </div>
+
+      <div class="project">
+        <h3>IoT Waste Management System</h3>
+        <p class="project-tech">
+          .NET · MQTT · EMQX · Kotlin · Firestore · Raspberry Pi
+        </p>
+        <p>
+          Smart affaldshåndteringssystem, der monitorerer fyldningsniveauer i affaldsbeholdere og sender data
+          via MQTT til en cloud-løsning. Data vises i en app/dashbord, og der er udviklet en fake datagenerator
+          til test og simulering.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Web- og frontendprojekter</h3>
+        <p class="project-tech">
+          React · HTML · CSS · JavaScript
+        </p>
+        <p>
+          Udvikling af mindre webapplikationer, bl.a. dashboard-løsninger, login-systemer og
+          responsive sider med fokus på brugervenlighed og komponentbaseret arkitektur.
+        </p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Erhvervserfaring</h2>
+
+      <div class="job">
+        <h3>Softwareudvikler – Studiemedhjælper</h3>
+        <span>Chromaviso A/S · feb. 2024 – okt. 2024</span>
+        <ul>
+          <li>Udviklede software til avancerede lysstyringssystemer på hospitaler.</li>
+          <li>Arbejdede med både frontend og backend, test og kvalitetssikring.</li>
+          <li>Deltog i implementering og test på hospitaler og plejehjem.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Softwareudvikler – Praktikant</h3>
+        <span>Chromaviso A/S · sept. 2023 – feb. 2024</span>
+        <ul>
+          <li>Udviklede intern tester til at fange fejl, før software blev leveret til kunder.</li>
+          <li>Arbejdet med unit tests, fejlsøgning og forbedringer af eksisterende løsninger.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Frontend Udvikler – Praktikant</h3>
+        <span>EventSelfie · juni 2025</span>
+        <ul>
+          <li>Forbedrede design og brugeroplevelse på virksomhedens hjemmeside.</li>
+          <li>Testede funktioner og hjalp med teknisk support til kunder.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Uddannelse</h2>
+      <p>
+        <strong>Diplomingeniør i Sundhedsteknologi</strong><br />
+        Aarhus Universitet · 2021 – 2025
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Kontakt</h2>
+      <p>
+        📍 Hornslet, Danmark<br />
+        📧 <a href="mailto:helanosman2018@gmail.com">helanosman2018@gmail.com</a><br />
+        📱 42 30 93 83<br />
+        🔗 <a href="https://www.linkedin.com/in/helan-osman-6b1342223" target="_blank">LinkedIn profil</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Helan Osman – Software Developer
+  </footer>
+
+  <script>
+    // Sætter automatisk årstal i footeren
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
