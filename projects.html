@@ -1,43 +1,263 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Projekter – Helan Osman</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --text-soft: #9ca3af;
+      --card-bg: #020617;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(15,23,42,0.9);
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+    }
+
+    .nav {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #f97316, #dc2626);
+      box-shadow: 0 0 10px #f97316;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(148,163,184,0.18);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1.8rem 1.2rem 3rem;
+    }
+
+    section {
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+      padding: 1.4rem 1.2rem;
+      border-radius: 14px;
+      background: rgba(15,23,42,0.92);
+      border: 1px solid rgba(148,163,184,0.25);
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 1rem;
+      background: rgba(15,23,42,0.9);
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1rem;
+    }
+
+    @media (max-width: 800px) {
+      .project-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .project-text h2 {
+      margin-bottom: 0.2rem;
+      font-size: 1.1rem;
+    }
+
+    .project-tech {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--text-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.4);
+      display: block;
+    }
+
+    .project-media video {
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      padding: 1.2rem 0 1.8rem;
+    }
+  </style>
 </head>
 <body>
+<header>
+  <div class="nav">
+    <div class="nav-left">
+      <div class="nav-dot"></div>
+      <span>Helan Osman</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Forside</a>
+      <a href="about.html">Om mig</a>
+      <a href="projects.html">Projekter</a>
+      <a href="index.html#contact">Kontakt</a>
+    </div>
+  </div>
+</header>
 
-  <nav>
-    <a href="index.html">Forside</a> |
-    <a href="about.html">Om mig</a> |
-    <a href="projects.html">Projekter</a>
-  </nav>
+<main>
+  <section>
+    <h1>Mine projekter</h1>
+    <p>
+      Her er et udvalg af de projekter, jeg har arbejdet med inden for Android, web,
+      backend og IoT.
+    </p>
 
-  <h1>Mine Projekter</h1>
+    <div class="projects-grid">
 
-  <!-- PROJEKT 1 -->
-  <h2>TolkCare App</h2>
-  <img src="images/tolkcare.png" width="300" alt="TolkCare screenshot">
+      <!-- PROJEKT 1: TolkCare -->
+      <div class="project-card">
+        <div class="project-text">
+          <h2>TolkCare App</h2>
+          <p class="project-tech">
+            Kotlin · Jetpack Compose · Firebase · Firestore · FCM · Agora SDK
+          </p>
+          <p>
+            Android-app til booking af tolke, hvor brugere kan vælge tidspunkter,
+            modtage notifikationer og kommunikere via voice/video-calls.
+          </p>
+          <p>
+            Appen håndterer bookings, sletning, favoritter og kalenderintegration
+            og bruger Firebase til autentificering og datalagring.
+          </p>
+        </div>
+        <div class="project-media">
+          <!-- Skift filnavn, hvis din fil hedder noget andet -->
+          <img src="images/tolkcare.png" alt="TolkCare screenshot" />
+          <!-- Hvis du har en video-fil -->
+          <!--
+          <video controls>
+            <source src="videos/tolkcare-video.mp4" type="video/mp4" />
+          </video>
+          -->
+        </div>
+      </div>
 
-  <h3>Video</h3>
-  <!-- Hvis du har MP4-fil -->
-  <video width="400" controls>
-    <source src="videos/tolkcare-video.mp4" type="video/mp4">
-    Din browser understøtter ikke video.
-  </video>
+      <!-- PROJEKT 2: IoT Waste -->
+      <div class="project-card">
+        <div class="project-text">
+          <h2>IoT Waste Management System</h2>
+          <p class="project-tech">
+            .NET · MQTT · EMQX · Kotlin · Firestore · Raspberry Pi
+          </p>
+          <p>
+            Smart affaldshåndteringssystem, der monitorerer fyldningsniveau i
+            affaldsbeholdere og sender data via MQTT til en cloud-løsning.
+          </p>
+          <p>
+            Systemet indeholder en fake datagenerator, IoT-integration og
+            visualisering af data i en app/dashbord.
+          </p>
+        </div>
+        <div class="project-media">
+          <img src="images/waste.png" alt="IoT Waste screenshot" />
+          <!-- Video (valgfri)
+          <video controls>
+            <source src="videos/waste-video.mp4" type="video/mp4" />
+          </video>
+          -->
+        </div>
+      </div>
 
-  <hr>
+      <!-- PROJEKT 3: Web / frontend -->
+      <div class="project-card">
+        <div class="project-text">
+          <h2>Web- og frontendprojekter</h2>
+          <p class="project-tech">
+            React · HTML · CSS · JavaScript
+          </p>
+          <p>
+            Udvikling af mindre webapplikationer, bl.a. dashboards, login-systemer
+            og responsive sider med fokus på komponentbaseret arkitektur og UX.
+          </p>
+        </div>
+        <div class="project-media">
+          <img src="images/webproject.png" alt="Webprojekt screenshot" />
+        </div>
+      </div>
 
-  <!-- PROJEKT 2 -->
-  <h2>IoT Waste Management</h2>
-  <img src="images/waste.png" width="300" alt="IoT screenshot">
+    </div>
+  </section>
+</main>
 
-  <h3>Video</h3>
-  <!-- MP4-fil -->
-  <video width="400" controls>
-    <source src="videos/waste-video.mp4" type="video/mp4">
-    Din browser understøtter ikke video.
-  </video>
+<footer>
+  © <span id="year"></span> Helan Osman – Software Developer
+</footer>
 
-
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
