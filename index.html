@@ -1,22 +1,503 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Helan Osman – Software Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --text-soft: #9ca3af;
+      --card-bg: #020617;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(15,23,42,0.9);
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+    }
+
+    .nav {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #f97316, #dc2626);
+      box-shadow: 0 0 10px #f97316;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(148,163,184,0.18);
+      color: var(--text);
+    }
+
+    /* LAYOUT */
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1.8rem 1.2rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.2rem;
+      align-items: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin: 0 0 0.6rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 32rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.1rem 0 1.4rem;
+      font-size: 0.8rem;
+    }
+
+    .chip {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--text-soft);
+    }
+
+    .chip-strong {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-soft);
+      border-color: rgba(148,163,184,0.5);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,0.8);
+      color: var(--text);
+    }
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      border-radius: 18px;
+      padding: 1rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: 0 18px 45px rgba(15,23,42,0.9);
+      max-width: 260px;
+      text-align: center;
+    }
+
+    .hero-card img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      max-height: 260px;
+    }
+
+    .hero-card h3 {
+      margin: 0.8rem 0 0.2rem;
+      font-size: 1rem;
+    }
+
+    .hero-card p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    /* SECTIONS */
+    section {
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+      padding: 1.4rem 1.2rem;
+      border-radius: 14px;
+      background: rgba(15,23,42,0.92);
+      border: 1px solid rgba(148,163,184,0.25);
+    }
+
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 800px) {
+      .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .skill-box {
+      background: rgba(15,23,42,0.9);
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+      font-size: 0.85rem;
+      border: 1px solid rgba(148,163,184,0.35);
+    }
+
+    .skill-box strong {
+      display: block;
+      margin-bottom: 0.15rem;
+      color: var(--text);
+    }
+
+    .project {
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed rgba(148,163,184,0.3);
+    }
+
+    .project:last-child {
+      border-bottom: none;
+    }
+
+    .project h3 {
+      margin: 0 0 0.1rem;
+      font-size: 1rem;
+    }
+
+    .project-tech {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--text-soft);
+      margin-bottom: 0.25rem;
+    }
+
+    .job {
+      margin-bottom: 0.9rem;
+    }
+
+    .job h3 {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .job span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 0.2rem;
+    }
+
+    .job ul {
+      padding-left: 1.1rem;
+      margin: 0.2rem 0 0.1rem;
+      font-size: 0.86rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      padding: 1.2rem 0 1.8rem;
+    }
+  </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Forside</a> |
-    <a href="about.html">Om mig</a> |
-    <a href="projects.html">Projekter</a>
-  </nav>
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="nav-dot"></div>
+        <span>Helan Osman</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Forside</a>
+        <a href="about.html">Om mig</a>
+        <a href="projects.html">Projekter</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+    </div>
+  </header>
 
-  <h1>Hej, jeg er Helan 👋</h1>
-  <p>Software Developer med fokus på Android, web og backend.</p>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <p class="chip-row">
+          <span class="chip chip-strong">Software Developer</span>
+          <span class="chip">Android · Web · Backend · IoT</span>
+        </p>
+        <h1 class="hero-title">Hej, jeg er Helan 👋</h1>
+        <p class="hero-subtitle">
+          Softwareudvikler med erfaring inden for Android-udvikling, webudvikling, backend og IoT-løsninger.
+          Jeg arbejder især med Kotlin, Jetpack Compose, React, Typescript, .NET, SQL og cloud-teknologier,
+          og har udviklet flere komplette applikationer – bl.a. TolkCare-appen og et IoT Waste Management-system.
+        </p>
 
-  <!-- BILLEDE AF DIG -->
-  <img src="images/helan.jpg" width="300" alt="Helan portræt">
+        <div class="chip-row">
+          <span class="chip">Kotlin · Jetpack Compose</span>
+          <span class="chip">React · TypeScript</span>
+          <span class="chip">.NET · SQL</span>
+          <span class="chip">Firebase · FCM · IoT</span>
+        </div>
 
+        <div class="hero-buttons">
+          <!-- Opdatér linket hvis din PDF-fil har andet navn -->
+          <a class="btn btn-primary" href="Helan_Osman_CV.pdf" target="_blank">Download CV</a>
+          <a class="btn btn-ghost" href="#projects">Se projekter</a>
+        </div>
+      </div>
+
+      <div class="hero-photo-wrap">
+        <div class="hero-card">
+          <!-- Sørg for at billedet hedder images/helan.jpg -->
+          <img src="images/helan.jpg" alt="Portræt af Helan" />
+          <h3>Helan Osman</h3>
+          <p>Software Developer · Aarhus / Hornslet</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OM MIG & SKILLS -->
+    <section id="about">
+      <div class="section-grid">
+        <div>
+          <h2>Om mig</h2>
+          <p>
+            Jeg er diplomingeniør i Sundhedsteknologi og arbejder som softwareudvikler
+            med fokus på mobile apps, web- og backend-udvikling. Jeg brænder for at bygge
+            løsninger, der skaber værdi for mennesker – særligt inden for sundhed og digitale services.
+          </p>
+          <p>
+            Gennem mine projekter og erfaring som studiemedhjælper og praktikant hos Chromaviso
+            og EventSelfie har jeg arbejdet med softwareudvikling, test, integration og
+            forbedring af eksisterende systemer i tæt samarbejde med kolleger og brugere.
+          </p>
+        </div>
+        <div>
+          <h2>Tekniske kompetencer</h2>
+          <div class="skills-grid">
+            <div class="skill-box">
+              <strong>Sprog</strong>
+              Kotlin, C#, JavaScript, TypeScript, Java
+            </div>
+            <div class="skill-box">
+              <strong>Frameworks</strong>
+              Jetpack Compose, React, .NET
+            </div>
+            <div class="skill-box">
+              <strong>Mobile & Cloud</strong>
+              Android, Firebase, Firestore, FCM, Agora SDK
+            </div>
+            <div class="skill-box">
+              <strong>Backend & DB</strong>
+              REST API’er, SQL, Firestore, Docker
+            </div>
+            <div class="skill-box">
+              <strong>IoT</strong>
+              MQTT, EMQX, Raspberry Pi, sensordata
+            </div>
+            <div class="skill-box">
+              <strong>Værktøjer & metoder</strong>
+              Git/GitHub, Visual Studio, VS Code, Postman, Scrum, testautomatisering
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJEKTER -->
+    <section id="projects">
+      <h2>Udvalgte projekter</h2>
+
+      <div class="project">
+        <h3>TolkCare App</h3>
+        <p class="project-tech">Kotlin · Jetpack Compose · Firebase · Firestore · FCM · Agora SDK</p>
+        <p>
+          Android-app til booking af tolke, hvor brugere kan vælge tidspunkter, modtage notifikationer
+          og kommunikere via voice/video-calls. Indeholder logik til håndtering af bookings, sletning,
+          favoritter og kalenderintegration.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>IoT Waste Management System</h3>
+        <p class="project-tech">.NET · MQTT · EMQX · Kotlin · Firestore · Raspberry Pi</p>
+        <p>
+          Smart affaldshåndteringssystem, der monitorerer fyldningsniveauer i affaldsbeholdere og sender
+          data via MQTT til en cloud-løsning. Data vises i en app/dashbord, og der er udviklet en fake
+          datagenerator til test og simulering.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Web- og frontendprojekter</h3>
+        <p class="project-tech">React · HTML · CSS · JavaScript</p>
+        <p>
+          Udvikling af mindre webapplikationer, bl.a. dashboard-løsninger, login-systemer og responsive
+          sider med fokus på brugervenlighed og komponentbaseret arkitektur.
+        </p>
+      </div>
+    </section>
+
+    <!-- ERFARING -->
+    <section id="experience">
+      <h2>Erhvervserfaring</h2>
+
+      <div class="job">
+        <h3>Softwareudvikler – Studiemedhjælper</h3>
+        <span>Chromaviso A/S · feb. 2024 – okt. 2024</span>
+        <ul>
+          <li>Udviklede software til avancerede lysstyringssystemer på hospitaler.</li>
+          <li>Arbejdede med både frontend og backend, test og kvalitetssikring.</li>
+          <li>Deltog i implementering og test på hospitaler og plejehjem.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Softwareudvikler – Praktikant</h3>
+        <span>Chromaviso A/S · sept. 2023 – feb. 2024</span>
+        <ul>
+          <li>Udviklede intern tester til at fange fejl, før software blev leveret til kunder.</li>
+          <li>Arbejdet med unit tests, fejlsøgning og forbedringer af eksisterende løsninger.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Frontend Udvikler – Praktikant</h3>
+        <span>EventSelfie · juni 2025</span>
+        <ul>
+          <li>Forbedrede design og brugeroplevelse på virksomhedens hjemmeside.</li>
+          <li>Testede funktioner og hjalp med teknisk support til kunder.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="contact">
+      <h2>Kontakt</h2>
+      <p>
+        📍 Hornslet, Danmark<br/>
+        📧 <a href="mailto:helanosman2018@gmail.com">helanosman2018@gmail.com</a><br/>
+        📱 42 30 93 83<br/>
+        🔗 <a href="https://www.linkedin.com/in/helan-osman-6b1342223" target="_blank">LinkedIn profil</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Helan Osman – Software Developer
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
